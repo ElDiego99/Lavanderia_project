@@ -79,7 +79,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'lavanderia_db',
-        'USER': 'postgres',
+        'USER': 'lavanderia_user',
         'PASSWORD': 'admin',
         'HOST': 'localhost',
         'PORT': '5432',
