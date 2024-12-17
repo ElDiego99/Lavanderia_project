@@ -18,7 +18,7 @@ class Servicio(models.Model):
     precio = models.IntegerField(default=0)
     
     def __str__(self):
-        return f"{self.nombre} - {self.descripcion}"
+        return f"{self.tipo_servicio} - {self.descripcion}"
     
 class Orden(models.Model):
     ESTADOS = [
@@ -27,7 +27,7 @@ class Orden(models.Model):
         ('Completado', 'Completado'),
         ('Cancelado', 'Cancelado'),
     ]
-    clinete = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     fecha_creacion = models.DateTimeField(auto_now_add=True)
     descripcion = models.TextField(blank=True, null=True)
     estado = models.CharField(max_length=20, choices=ESTADOS, default='Pendiente')
@@ -47,4 +47,4 @@ class OrdenServicio(models.Model):
         super().save(*args, **kwargs)
         
     def __str__(self):
-        return f"{self.cantidad} x {self.servicio.nombre} - Orden #{self.orden.id}"
+        return f"{self.cantidad} x {self.servicio} - Orden #{self.orden.id}"
