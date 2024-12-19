@@ -1,6 +1,7 @@
 from django.db import models
 
 # Create your models here.
+# Campos de la db para cada clase
 class Cliente(models.Model):
     nombre = models.CharField(max_length=100)
     apellido = models.CharField(max_length=100)
@@ -32,6 +33,10 @@ class Orden(models.Model):
     descripcion = models.TextField(blank=True, null=True)
     estado = models.CharField(max_length=20, choices=ESTADOS, default='Pendiente')
     total = models.IntegerField(default=0)
+    
+    class Meta:
+        verbose_name = "Orden"
+        verbose_name_plural = "Órdenes"
     
     def __str__(self):
         return f"Orden #{self.id} - {self.cliente.nombre}"
