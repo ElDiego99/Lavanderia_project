@@ -9,7 +9,7 @@ class ClienteSerializer(serializers.ModelSerializer):
 class ServicioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Servicio
-        fields = all
+        fields = '__all__'
 
 class OrdenSerializer(serializers.ModelSerializer):
     class Meta:
